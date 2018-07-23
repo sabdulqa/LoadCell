@@ -15,7 +15,7 @@
 
 #define I2C_OPEN    SSPCON |= 0b00101000;              // enable synchronous serial port
 #define I2C_CLOSE   SSPCON &= 0xdf;              // disable synchronous serial port
-#define I2C_INIT    SDA_DIR=1; SCK_DIR=1; SSPADD=((_XTAL_FREQ/(4000*I2C_SPEED) - 1)); SSPSTAT=0x0; SSPCON=0b00101000; SSPCON2 = 0;
+#define I2C_INIT    SDA_DIR=1; SCK_DIR=1; SSPADD=((_XTAL_FREQ/(4000*I2C_SPEED) - 1)); SSPSTAT=0x0; SSPCON=0b00101000; SSPCON2 = 0;SDA_DIR=1;SCK_DIR=1;
 #define I2C_START   SSPCON2bits.SEN = 1; //while(SSP1CON2bits.SEN);
 #define I2C_STOP    SSPCON2bits.PEN = 1; //while(SSP1CON2bits.PEN);
 #define I2C_ACK     SSPCON2bits.ACKDT=0; SSPCON2bits.ACKEN=1; while(RCEN && SSPCON2bits.ACKEN);
